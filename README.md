@@ -3,10 +3,10 @@ Semi-Supervised Anomaly Detection Based on Deep Generative Models with Transform
 Requirements
 ----
 ```python
-pyhton == 3.7.3
-torch == 1.7.0
-torchvision == 0.8.1
-einops == 0.3.0
+pyhton >= 3.7.3
+torch >= 1.7.0
+torchvision >= 0.8.1
+einops >= 0.3.0
 ```
 Training on CIFAR10
 -----
