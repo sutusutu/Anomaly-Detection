@@ -1,7 +1,5 @@
-Trans-GANomaly
+Semi-Supervised Anomaly Detection Based on Deep Generative Models with Transformer
 ====
-Paper:Trans-GANomaly: Anomaly Detection Generated Adversarial Model Based on Transformer
----
 Requirements
 ----
 ```python
