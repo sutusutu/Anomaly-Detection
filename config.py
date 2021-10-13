@@ -25,21 +25,21 @@ class Config():
         self.parser.add_argument('--ndf', type=int, default=64)
         self.parser.add_argument('--extralayers', type=int, default=0, help='Number of extra layers on gen and disc')
         # self.parser.add_argument('--device', type=str, default='gpu', help='Device: gpu | cpu')
-        self.parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
+        self.parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. plane  plane,1,2, plane,2. use -1 for CPU')
         self.parser.add_argument('--ngpu', type=int, default=1, help='number of GPUs to use')
         # self.parser.add_argument('--name', type=str, default='experiment_name', help='name of the experiment')
         self.parser.add_argument('--model', type=str, default='ganomaly', help='chooses which model to use. ganomaly')
         self.parser.add_argument('--display_server', type=str, default="http://localhost",
                                  help='visdom server of the web display')
         self.parser.add_argument('--display_port', type=int, default=8097, help='visdom port of the web display')
-        self.parser.add_argument('--display_id', type=int, default=0, help='window id of the web display')
+        self.parser.add_argument('--display_id', type=int, default=1, help='window id of the web display')
         # self.parser.add_argument('--display', action='store_true', help='Use visdom.')
-        self.parser.add_argument('--display', type=str, default=False, help='Use visdom.')
+        self.parser.add_argument('--display', type=str, default=True, help='Use visdom.')
 
         self.parser.add_argument('--outf', default='./output', help='folder to output images and model checkpoints')
         self.parser.add_argument('--manualseed', default=-1, type=int, help='manual seed')
 
-        self.parser.add_argument('--abnormal_class', default='plane', help='Anomaly class idx for mnist and cifar datasets,mnist 0-9,cifar100 0-20')
+        self.parser.add_argument('--normaly_class', default='plane', help='Anomaly class idx for mnist and cifar datasets,mnist plane-9,cifar100 plane-20')
         self.parser.add_argument('--proportion', type=float, default=0.1, help='Proportion of anomalies in test set.')
         self.parser.add_argument('--metric', type=str, default='roc', help='Evaluation metric.')
         # data
@@ -81,14 +81,14 @@ class Config():
         self.parser.add_argument('--resume', default='', help="path to checkpoints (to continue training)")
         self.parser.add_argument('--phase', type=str, default='train', help='train, val, test, etc')
         self.parser.add_argument('--iter', type=int, default=0, help='Start from iteration i')
-        self.parser.add_argument('--niter', type=int, default=15, help='number of epochs to train for')
+        self.parser.add_argument('--niter', type=int, default=50, help='number of epochs to train for')
         self.parser.add_argument('--beta1', type=float, default=0.9, help='momentum term of adam')
         self.parser.add_argument('--lr_g', type=float, default=0.0002, help='initial learning rate for adam')
         self.parser.add_argument('--lr_d', type=float, default=0.0002, help='initial learning rate for adam')
 
         self.parser.add_argument('--w_adv', type=float, default=1, help='Adversarial loss weight')
-        self.parser.add_argument('--w_con', type=float, default=50, help='Reconstruction loss weight')
-        self.parser.add_argument('--w_enc', type=float, default=1, help='Encoder loss weight.')
+        self.parser.add_argument('--w_con', type=float, default=1, help='Reconstruction loss weight')
+        self.parser.add_argument('--w_enc', type=float, default=50, help='Encoder loss weight.')
         self.isTrain = True
         self.config = None
 
