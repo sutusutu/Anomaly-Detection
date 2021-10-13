@@ -62,7 +62,7 @@ def load_data(opt):
             trn_lbl=dataset['train'].targets,
             tst_img=dataset['test'].data,
             tst_lbl=dataset['test'].targets,
-            abn_cls_idx=classes[opt.abnormal_class],
+            abn_cls_idx=classes[opt.normaly_class],
             manualseed=opt.manualseed
         )
 
@@ -77,7 +77,7 @@ def load_data(opt):
         return dataloader
 
     elif opt.dataset in ['mnist']:
-        opt.abnormal_class = int(opt.abnormal_class)
+        opt.normaly_class = int(opt.normaly_class)
 
         splits = ['train', 'test']
         drop_last_batch = {'train': True, 'test': False}
@@ -101,7 +101,7 @@ def load_data(opt):
             trn_lbl=dataset['train'].targets,
             tst_img=dataset['test'].data,
             tst_lbl=dataset['test'].targets,
-            abn_cls_idx=opt.abnormal_class,
+            abn_cls_idx=opt.normaly_class,
             manualseed=opt.manualseed
         )
 
@@ -116,7 +116,7 @@ def load_data(opt):
         return dataloader
 
     elif opt.dataset in ['mnist2']:
-        opt.abnormal_class = int(opt.abnormal_class)
+        opt.normaly_class = int(opt.normaly_class)
 
         splits = ['train', 'test']
         drop_last_batch = {'train': True, 'test': False}
@@ -140,7 +140,7 @@ def load_data(opt):
             trn_lbl=dataset['train'].targets,
             tst_img=dataset['test'].data,
             tst_lbl=dataset['test'].targets,
-            nrm_cls_idx=opt.abnormal_class,
+            nrm_cls_idx=opt.normaly_class,
             proportion=opt.proportion,
             manualseed=opt.manualseed
         )
@@ -156,7 +156,7 @@ def load_data(opt):
         return dataloader
 
     elif opt.dataset in ['cifar100']:
-        opt.abnormal_class = int(opt.abnormal_class)
+        opt.normaly_class = int(opt.normaly_class)
         splits = ['train', 'test']
         drop_last_batch = {'train': True, 'test': False}
         shuffle = {'train': True, 'test': False}
@@ -183,7 +183,7 @@ def load_data(opt):
             trn_lbl=dataset['train'].targets,
             tst_img=dataset['test'].data,
             tst_lbl=dataset['test'].targets,
-            abn_cls_idx=opt.abnormal_class,
+            abn_cls_idx=opt.normaly_class,
             manualseed=opt.manualseed
         )
 
@@ -228,7 +228,7 @@ def get_cifar_anomaly_dataset(trn_img, trn_lbl, tst_img, tst_lbl, abn_cls_idx=0,
         tst_lbl {np.array} -- Test     labels
 
     Keyword Arguments:
-        abn_cls_idx {int} -- Anomalous class index (default: {0})
+        abn_cls_idx {int} -- Anomalous class index (default: {plane})
 
     Returns:
         [np.array] -- New training-test images and labels.
@@ -254,7 +254,7 @@ def get_cifar_anomaly_dataset(trn_img, trn_lbl, tst_img, tst_lbl, abn_cls_idx=0,
     abn_tst_lbl = tst_lbl[abn_tst_idx]    # Abnormal training labels.
 
     # --
-    # Assign labels to normal (0) and abnormals (1)
+    # Assign labels to normal (plane) and abnormals (1)
     nrm_trn_lbl[:] = 0
     nrm_tst_lbl[:] = 0
     abn_trn_lbl[:] = 1
@@ -308,7 +308,7 @@ def get_mnist_anomaly_dataset(trn_img, trn_lbl, tst_img, tst_lbl, abn_cls_idx=0,
         tst_lbl {np.array} -- Test     labels
 
     Keyword Arguments:
-        abn_cls_idx {int} -- Anomalous class index (default: {0})
+        abn_cls_idx {int} -- Anomalous class index (default: {plane})
 
     Returns:
         [np.array] -- New training-test images and labels.
@@ -335,7 +335,7 @@ def get_mnist_anomaly_dataset(trn_img, trn_lbl, tst_img, tst_lbl, abn_cls_idx=0,
     abn_tst_lbl = tst_lbl[abn_tst_idx]    # Abnormal training labels.
 
     # --
-    # Assign labels to normal (0) and abnormals (1)
+    # Assign labels to normal (plane) and abnormals (1)
     nrm_trn_lbl[:] = 0
     nrm_tst_lbl[:] = 0
     abn_trn_lbl[:] = 1
@@ -384,7 +384,7 @@ def get_mnist2_anomaly_dataset(trn_img, trn_lbl, tst_img, tst_lbl, nrm_cls_idx=0
         tst_lbl {np.array} -- Test     labels
 
     Keyword Arguments:
-        nrm_cls_idx {int} -- Anomalous class index (default: {0})
+        nrm_cls_idx {int} -- Anomalous class index (default: {plane})
 
     Returns:
         [tensor] -- New training-test images and labels.
@@ -421,7 +421,7 @@ def get_mnist2_anomaly_dataset(trn_img, trn_lbl, tst_img, tst_lbl, nrm_cls_idx=0
     abn_tst_lbl = tst_lbl[abn_tst_idx]    # Abnormal training labels.
 
     # --
-    # Assign labels to normal (0) and abnormals (1)
+    # Assign labels to normal (plane) and abnormals (1)
     nrm_trn_lbl[:] = 0
     nrm_tst_lbl[:] = 0
     abn_trn_lbl[:] = 1
