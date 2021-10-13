@@ -18,7 +18,7 @@ To train the model on CIFAR10 dataset for a given anomaly class, run the followi
 python train.py
     --dataset cifar10                                                   
     --niter <number-of-epochs>                                          
-    --abnormal_class                                                    
+    --normaly_class                                                    
         <plane, car, bird, cat, deer, dog, frog, horse, ship, truck>    
     --display                       # optional if you want to visualize        
 ```
